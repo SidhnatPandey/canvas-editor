@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: REPLACE_WITH_PROJECT_URL
+**URL**: [REPLACE_WITH_PROJECT_URL](https://canvas-editor-theta.vercel.app/)
 
 ## How can I edit this code?
 
@@ -18,10 +18,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <GIT_URL>
+git clone https://github.com/SidhnatPandey/canvas-editor.git
 
 # Step 2: Navigate to the project directory.
-cd <PROJECT_NAME>
+cd canvas-editor
 
 # Step 3: Install the necessary dependencies.
 npm i
