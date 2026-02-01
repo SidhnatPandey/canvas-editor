@@ -54,10 +54,4 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
 
-You can deploy this project to any static hosting provider (Vercel, Netlify, etc.). Push your repository to GitHub and follow your host's deployment docs.
-
-## Can I connect a custom domain?
-
-Yes — check your hosting provider's documentation for adding custom domains and DNS setup.
