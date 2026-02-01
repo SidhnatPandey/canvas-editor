@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 13% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 13%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 13%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 13% 13%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+
+    /* Editor specific tokens */
+    --panel-bg: 0 0% 100%;
+    --panel-border: 220 13% 91%;
+    --canvas-bg: 220 14% 96%;
+    --canvas-checkerboard: 220 14% 92%;
+    --tool-active: 217 91% 97%;
+    --tool-active-border: 217 91% 60%;
+    --selection-border: 217 91% 60%;
+    --handle-fill: 0 0% 100%;
+    --handle-border: 217 91% 60%;
+    --guide-color: 340 82% 52%;
+    --layer-hover: 220 14% 97%;
+    --layer-selected: 217 91% 97%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 13% 13%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 220 13% 13%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 224 14% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 224 14% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 224 14% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 224 14% 16%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 224 14% 16%;
+    --muted-foreground: 215 14% 55%;
+
+    --accent: 224 14% 16%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 224 14% 20%;
+    --input: 224 14% 20%;
+    --ring: 217 91% 60%;
+
+    /* Editor specific tokens - dark mode */
+    --panel-bg: 224 14% 12%;
+    --panel-border: 224 14% 20%;
+    --canvas-bg: 224 14% 8%;
+    --canvas-checkerboard: 224 14% 10%;
+    --tool-active: 217 91% 15%;
+    --tool-active-border: 217 91% 60%;
+    --selection-border: 217 91% 60%;
+    --handle-fill: 224 14% 12%;
+    --handle-border: 217 91% 60%;
+    --guide-color: 340 82% 52%;
+    --layer-hover: 224 14% 15%;
+    --layer-selected: 217 91% 15%;
+
+    --sidebar-background: 224 14% 12%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 14% 16%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 224 14% 20%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-panel border-panel-border;
+  }
+
+  .tool-button {
+    @apply flex flex-col items-center justify-center gap-1 p-2 rounded-lg transition-all duration-200 cursor-pointer;
+    @apply hover:bg-muted text-muted-foreground hover:text-foreground;
+  }
+
+  .tool-button.active {
+    @apply bg-tool-active border border-tool-active-border text-primary;
+  }
+
+  .layer-item {
+    @apply flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors duration-150;
+    @apply hover:bg-layer-hover;
+  }
+
+  .layer-item.selected {
+    @apply bg-layer-selected;
+  }
+
+  .property-input {
+    @apply h-8 text-sm bg-secondary border-0 rounded-md px-2;
+    @apply focus:ring-2 focus:ring-primary focus:ring-offset-0;
+  }
+
+  .property-label {
+    @apply text-xs font-medium text-muted-foreground uppercase tracking-wide;
+  }
+
+  .canvas-wrapper {
+    @apply relative;
+    background-image: 
+      linear-gradient(45deg, hsl(var(--canvas-checkerboard)) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(var(--canvas-checkerboard)) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--canvas-checkerboard)) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--canvas-checkerboard)) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+
+  .selection-handle {
+    @apply absolute w-2.5 h-2.5 bg-handle rounded-sm border-2 border-handle-border;
+    @apply cursor-pointer transition-transform duration-100 hover:scale-125;
+  }
+
+  .rotate-handle {
+    @apply absolute w-3 h-3 bg-handle rounded-full border-2 border-handle-border;
+    @apply cursor-grab active:cursor-grabbing transition-transform duration-100 hover:scale-125;
+  }
+}
+
+@layer utilities {
+  .bg-panel {
+    background-color: hsl(var(--panel-bg));
+  }
+
+  .border-panel-border {
+    border-color: hsl(var(--panel-border));
+  }
+
+  .bg-canvas {
+    background-color: hsl(var(--canvas-bg));
+  }
+
+  .bg-tool-active {
+    background-color: hsl(var(--tool-active));
+  }
+
+  .border-tool-active-border {
+    border-color: hsl(var(--tool-active-border));
+  }
+
+  .border-selection {
+    border-color: hsl(var(--selection-border));
+  }
+
+  .bg-handle {
+    background-color: hsl(var(--handle-fill));
+  }
+
+  .border-handle-border {
+    border-color: hsl(var(--handle-border));
+  }
+
+  .bg-layer-hover {
+    background-color: hsl(var(--layer-hover));
+  }
+
+  .bg-layer-selected {
+    background-color: hsl(var(--layer-selected));
+  }
+}
